@@ -24,14 +24,17 @@
 </head>
 
 <body>
-    
     <h1>Random Quotes</h1>
     <p>Click below to get a random quote</p>
     <button onclick="onGetQuoteClick()">Get Quote</button>
-    <div id="quoteDisplay"></div>
+    <div style="height: 70px;" id="quoteDisplay"></div>
     
-    <script src="script.js"></script>
-    
+    <button id="startIntervalBtn" style="margin: 20px 0px 0px 0px;">Start Interval</button>
+    <button id="stopIntervalBtn">Stop Interval</button>
+  
+    <div id="timeoutOutput">Interval stopped</div>
+
+    <script src="script.js"></script>    
 </body>
 
 </html>
