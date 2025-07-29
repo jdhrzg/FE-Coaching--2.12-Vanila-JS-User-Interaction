@@ -1,12 +1,13 @@
 <!-- 
+ 
  2.12 Exercise: Build something with vanilla JS, no libraries allowed. Include:
  X- Fetch calls
  X- Prototypes
  X- User interactions/button clicks
  - Updating a single component in several ways depending on user actions
- - setTimeout 
- - setInterval
- - Q: How precise are setTimeout and setInterval?
+ X- setTimeout 
+ X- setInterval
+ X- Q: How precise are setTimeout and setInterval?
     - How close to the millisecond are they to the value you passed in
  - Keeping UI responsive and not freezing
     - Build a long running-process with “start” and “stop” buttons
@@ -20,19 +21,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Random Quotes</title>
+    <title>2.12 Exercise</title>
 </head>
 
 <body>
-    <h1>Random Quotes</h1>
+    <h1>2.12 Exercise</h1>
     <p>Click below to get a random quote</p>
     <button onclick="onGetQuoteClick()">Get Quote</button>
     <div style="height: 70px;" id="quoteDisplay"></div>
     
     <button id="startIntervalBtn" style="margin: 20px 0px 0px 0px;">Start Interval</button>
     <button id="stopIntervalBtn">Stop Interval</button>
-  
-    <div id="timeoutOutput">Interval stopped</div>
+    <div id="intervalOutput">Interval stopped</div>
+
+    <button id="startTimeoutBtn" style="margin: 20px 0px 0px 0px;">Start Timeout</button>
+    <div id="timeoutOutput">Timeout stopped</div>
 
     <script src="script.js"></script>    
 </body>
