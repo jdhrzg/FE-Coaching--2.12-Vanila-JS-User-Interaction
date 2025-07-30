@@ -8,10 +8,10 @@
  X- setTimeout 
  X- setInterval
  X- Q: How precise are setTimeout and setInterval?
-    - How close to the millisecond are they to the value you passed in
+    X- How close to the millisecond are they to the value you passed in
  - Keeping UI responsive and not freezing
-    - Build a long running-process with “start” and “stop” buttons
-    - Implement loading animations for fetch calls
+    X- Build a long running-process with “start” and “stop” buttons
+    /- Implement loading animations for fetch calls
     - Use both sync and async fetch calls
 
  -->
@@ -22,6 +22,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2.12 Exercise</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -36,8 +37,9 @@
 
     <button id="startTimeoutBtn" style="margin: 20px 0px 0px 0px;">Start Timeout</button>
     <div id="timeoutOutput">Timeout stopped</div>
+    <div id="loader"></div>
 
-    <script src="script.js"></script>    
+    <script type="module" src="script.js"></script>    
 </body>
 
 </html>

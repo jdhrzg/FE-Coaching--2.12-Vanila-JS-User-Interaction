@@ -40,7 +40,6 @@ async function makeRequest(url) {
     }
 
     const json = await response.json();
-
     return json;
   } catch (error) {
     console.error(error.message);
@@ -87,19 +86,24 @@ let timeoutId = null;
 const startTimeoutBtn = document.getElementById("startTimeoutBtn");
 const timeoutOutput = document.getElementById("timeoutOutput");
 
-startTimeoutBtn.addEventListener("click", () => {
-  if (timeoutId !== null) return;
+startTimeoutBtn.addEventListener("click", async () => {
+  const outputStartString = `${getOutputAndTime("Timeout", "start")}`;
+  timeoutOutput.textContent = outputStartString;
+  console.log(outputStartString);
 
-  console.log(getOutputAndTime("Timeout", "start"));
+  const loader = document.getElementById("loader");
+  loader.style.display = "block";
 
-  timeoutId = setTimeout(() => {
-    const outputString = `${getOutputAndTime("Timeout", "ran")}`;
-    timeoutOutput.textContent = outputString;
-    console.log(outputString);
-  }, 1000);
+  await longRunning(2000);
+
+  loader.style.display = "none";
+
+  const outputRanString = `${getOutputAndTime("Timeout", "ran")}`;
+  timeoutOutput.textContent = outputRanString;
+  console.log(outputRanString);
 });
 
-// Seriously, no "hh:mm:ss.ffff" formatting? :)
+// Seriously, no "hh:mm:ss.fff" formatting? :)
 function getOutputAndTime(mode, startRan) {
   const now = new Date();
   const h = now.getHours().toString().padStart(2, "0");
@@ -108,4 +112,13 @@ function getOutputAndTime(mode, startRan) {
   const ms = now.getMilliseconds().toString().padStart(3, "0");
 
   return `${mode} ${startRan} | ${h}:${m}:${s}.${ms}`;
+}
+
+//
+// Long running process
+//
+function longRunning(ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), ms);
+  });
 }
