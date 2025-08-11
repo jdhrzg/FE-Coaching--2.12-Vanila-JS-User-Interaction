@@ -14,6 +14,14 @@
     /- Implement loading animations for fetch calls
     - Use both sync and async fetch calls
 
+X- Watch
+    X- Threading video
+    X- NodeJS video
+
+- Make long running process that is CPU bound
+    - Try to pause (unpause) it
+    - Make sure loading animation still works
+
  -->
 
 <!DOCTYPE html>
@@ -38,6 +46,10 @@
     <button id="startTimeoutBtn" style="margin: 20px 0px 0px 0px;">Start Timeout</button>
     <div id="timeoutOutput">Timeout stopped</div>
     <div id="loader"></div>
+
+    <button id="startCpuBoundBtn" style="margin: 20px 0px 0px 0px;">Start Cpu Bound</button>
+    <div id="cpuBoundOutput">CPU bound stopped</div>
+    <div id="loader2"></div>
 
     <script type="module" src="script.js"></script>    
 </body>

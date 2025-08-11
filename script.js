@@ -122,3 +122,15 @@ function longRunning(ms) {
     setTimeout(() => resolve(), ms);
   });
 }
+
+//
+// Make long running process that is CPU bound
+//
+function CpuBound() {
+  var result = 0;
+  for (var i = 0; i < 10000000000; i++) {
+    result += Math.floor(Math.sqrt(i));
+  }
+  console.log(result);
+  return result;
+}
