@@ -126,11 +126,25 @@ function longRunning(ms) {
 //
 // Make long running process that is CPU bound
 //
-function CpuBound() {
-  var result = 0;
-  for (var i = 0; i < 10000000000; i++) {
-    result += Math.floor(Math.sqrt(i));
-  }
-  console.log(result);
-  return result;
+document
+  .getElementById("startCpuBoundBtn")
+  .addEventListener("click", startWorker);
+document
+  .getElementById("pauseCpuBoundBtn")
+  .addEventListener("click", pauseWorker);
+
+const cpuBoundOutput = document.getElementById("cpuBoundOutput");
+
+const worker = new Worker("worker.js");
+
+function startWorker() {
+  worker.postMessage("start");
 }
+
+function pauseWorker() {
+  worker.postMessage("pause");
+}
+
+worker.onmessage = (message) => {
+  cpuBoundOutput.innerText = `${message.data.type}- ${message.data}`;
+};
