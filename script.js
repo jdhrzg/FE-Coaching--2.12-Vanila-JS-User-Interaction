@@ -134,17 +134,26 @@ document
   .addEventListener("click", pauseWorker);
 
 const cpuBoundOutput = document.getElementById("cpuBoundOutput");
+const loader2 = document.getElementById("loader2");
 
 const worker = new Worker("worker.js");
 
 function startWorker() {
+  loader2.style.display = "block";
   worker.postMessage("start");
 }
 
 function pauseWorker() {
+  loader2.style.display = "none";
   worker.postMessage("pause");
 }
 
 worker.onmessage = (message) => {
-  cpuBoundOutput.innerText = `${message.data.type}- ${message.data}`;
+  if (message.data.type == "progress") {
+    cpuBoundOutput.innerText = `${message.data.type}: ${message.data.result}%`;
+  }
+  else {
+    loader.style.display = "none";
+    cpuBoundOutput.innerText = `${message.data.type}: ${message.data.result}`;
+  }
 };

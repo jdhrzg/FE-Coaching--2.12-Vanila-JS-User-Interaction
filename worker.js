@@ -19,7 +19,7 @@ function doWork() {
     result += Math.sqrt(i);
 
     if (i % 100000000 === 0) {
-      postMessage({ type: "progress", data: (i / maxWork) * 100 });
+      postMessage({ type: "progress", result: Math.round((i / maxWork) * 100) });
     }
 
     if (i >= maxWork) {
