@@ -1,6 +1,10 @@
 //
 // Fetch & Prototypes
 //
+document
+  .getElementById("getQuoteBtn")
+  .addEventListener("click", onGetQuoteClick);
+
 function Quote(author, quote) {
   this.author = author;
   this.quote = quote;
@@ -139,21 +143,21 @@ const loader2 = document.getElementById("loader2");
 const worker = new Worker("worker.js");
 
 function startWorker() {
-  loader2.style.display = "block";
   worker.postMessage("start");
+  loader2.style.display = "block";
 }
 
 function pauseWorker() {
-  loader2.style.display = "none";
   worker.postMessage("pause");
+  loader2.style.display = "none";
 }
 
 worker.onmessage = (message) => {
   if (message.data.type == "progress") {
     cpuBoundOutput.innerText = `${message.data.type}: ${message.data.result}%`;
-  }
-  else {
+  } else if (message.data.type == "result") {
     loader.style.display = "none";
     cpuBoundOutput.innerText = `${message.data.type}: ${message.data.result}`;
+    loader2.style.display = "none";
   }
 };

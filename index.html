@@ -4,7 +4,7 @@
  X- Fetch calls
  X- Prototypes
  X- User interactions/button clicks
- - Updating a single component in several ways depending on user actions
+ / - Updating a single component in several ways depending on user actions
  X- setTimeout 
  X- setInterval
  X- Q: How precise are setTimeout and setInterval?
@@ -19,7 +19,7 @@ X- Watch
     X- NodeJS video
 
 - Make long running process that is CPU bound
-    /- Try to pause (unpause) it
+    X- Try to pause (unpause) it
     X- Make sure loading animation still works
 
  -->
@@ -36,7 +36,7 @@ X- Watch
 <body>
     <h1>2.12 Exercise</h1>
     <p>Click below to get a random quote</p>
-    <button onclick="onGetQuoteClick()">Get Quote</button>
+    <button id="getQuoteBtn">Get Quote</button>
     <div style="height: 70px;" id="quoteDisplay"></div>
     
     <button id="startIntervalBtn" style="margin: 20px 0px 0px 0px;">Start Interval</button>
