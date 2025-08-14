@@ -15,9 +15,9 @@ This is an exercise assigned to me by my front end dev coach, meant to practice 
     - Use both sync and async fetch calls
 
 - Watch these videos on threading and the event loop in Javascript and Node.js
- - Event loop video: https://youtu.be/8aGhZQkoFbQ?si=In-5MXoNOSbVH6eG
- - Ryan Dahl's node.js introduction: https://www.youtube.com/watch?v=EeYvFl7li9E
+    - Event loop video: https://youtu.be/8aGhZQkoFbQ?si=In-5MXoNOSbVH6eG
+    - Ryan Dahl's node.js introduction: https://www.youtube.com/watch?v=EeYvFl7li9E
 
 - Make a long running process that is CPU bound
- - Make it pausable and unpausable
- - Make sure loading animation still works
+    - Make it pausable and unpausable
+    - Make sure loading animation still works
