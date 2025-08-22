@@ -1,0 +1,25 @@
+What the heck is the event loop anyway? | Philip Roberts | JSConf EU
+https://youtu.be/8aGhZQkoFbQ?si=UD8vWYuOTbw5vGSh
+
+V8 = runtime in chrome
+	Contains heap and call stack
+
+	Doesn't have document or settimeout
+-> WebAPIs (provides document, ajax, setTimeout)
+-> Callback queue (provides onClick, onLoad, onDone)
+	
+JS is isngle threaded, one thread == one stack == one thing
+
+Call stack is push pop only
+
+Blocking - what happens when things are slow
+	When long running sync things are happening the page is blocked
+	Async callbacks help with this
+	JS runtime can only do one thing at a time but WebAPIs and Callback queue can help with this
+		A setTimeout pushes a timer to the WebAPI layer to deal with waiting async-ly, then pushes a task onto the task queue when done, then pushes a call onto call stack from task queue
+			Event loop (task queue) waits for call stack to be empty before pushing next thing onto the stack
+		setTimeout(()={}, 0) defers the thing until stack is clear
+		ajax works the same way
+		setTimeout interval is minimum time to execution, if stack is busy then it will take longer
+		JS can't render when there are things on the callstack
+			Putting things on the callback queue helps let some renders happen

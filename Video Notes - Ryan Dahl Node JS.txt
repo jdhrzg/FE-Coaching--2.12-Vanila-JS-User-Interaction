@@ -1,0 +1,42 @@
+Ryan Dahl: Node JS
+https://youtu.be/EeYvFl7li9E?si=RSVTeH3uum4Vz8ab
+
+I/O is slow once you get to disk and network things
+
+What can you do while it's working, just wait?
+
+Other threads of execution can run while waiting
+Is that the best we can do?
+
+Apache vs NGINX
+Apache slows down with more users, also uses a lot more memory
+Apache uses threads for each connnection - big memory and resources
+NGINX uses an event loop - requires non-blocking IO
+
+db.query() 
+// do stuff
+-- type code blocks the process and implies multi execution stacks
+
+db.query(..., function(result) {//do stuff}) 
+-- callback allows the event loop to continue immediately
+
+Why threads?
+	We use sockets and threads because that's what we start with (console.readline)
+	Infrastructure problems - Most libraries don't support this
+
+EventMachine, Twisted, AnyEvent help with this but it's hard to use
+
+JS was built for event loops, culture fits too
+
+Node.js was built to provide evented non blocking infra
+	For IO, has to be a callback
+	HJTTP, TCP, DNS have to be supported easily
+	Has to be familiar to JS and Unix peeps
+
+Many elements emit events in Node
+	ex: TCP server emits a connection event
+
+File IO is nonblocking and uses promises to be that way
+
+Everything has a promise/callback - like there are two methods, one for call stack and one for event loop
+
